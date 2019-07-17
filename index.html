@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- <link rel="stylesheet" type="text/css" href="greet.css"> -->
+  <link rel="stylesheet" type="text/css" href="simple-grid.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container center">
+    <h1 class="center">Greeting</h1>
+    <strong>counter</strong>
+    <span>= <span class="counterOutPut">0</span> </span>
+    <div class="row name">
+      <div class="center">
+        Name: <input name="name" rows="1" cols="15" class="inputName" placeholder="Enter Name"></input>
+        <button class="greetBtn">Greet Me</button>
+        <div  class="col-12">
+        <label class="">
+          <input type="radio" name="radioType" class="languageType" value="English">
+          <span class="label-body">English</span>
+        </label>
+
+        <label class="">
+          <input type="radio" name="radioType" class="languageType" value="Afrikaans">
+          <span class="label-body">Afrikaans</span>
+        </label>
+        <label class="">
+          <input type="radio" name="radioType" class="languageType" value="IsiXhosa">
+          <span class="label-body">IsiXhosa</span>
+        </label>
+      </div>
+    </div>
+    </div>
+
+  <div class="row">
+    <div class="col-12 center">
+        Text displayed<span class="center greet-message"></span>
+    </div>
+  </div>
+  </div>
+  <script src="greetFactory.js" charset="utf-8"></script>
+  <script src="greet.js" charset="utf-8"></script>
+</body>
+
+</html>
