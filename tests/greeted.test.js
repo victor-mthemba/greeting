@@ -1,48 +1,62 @@
+describe('Name entered and Language selected', function () {
 
-describe('Name entered amd Language selected', function(){
+    it('should greet name entered  in the selected language which is English', function () {
+        var nameEntered = greetFactory();
+        assert.deepEqual(nameEntered.greetNameEntered('Victor', 'English'), 'Hello, Victor');
 
-    var nameEntered = greetFactory();
+    });
+    it('should greet name entered  in the selected language which is Isixhosa', function () {
+        var nameEntered = greetFactory();
+        assert.deepEqual(nameEntered.greetNameEntered('Sibusiso', 'IsiXhosa'), 'Molo, Sibusiso');
 
-    nameEntered.greetNameEnter();
+    });
 
-    it('should greet name entered  in the selected language which is English', function(){
-        assert.deepEqual(nameEntered.greetNameEnter('Victor', 'English'), 'Hello, Victor');
 
-});
-    var nameEntered2 = greetFactory();
+    it('should greet name entered  in the selected language which is Afrikaans', function () {
+        var nameEntered = greetFactory();
+        assert.deepEqual(nameEntered.greetNameEntered('Sesethu', 'Afrikaans'), 'Hallo, Sesethu');
 
-    nameEntered2.greetNameEnter();
+    });
 
-    it('should greet name entered  in the selected language which is Isixhosa', function(){
-        assert.deepEqual(nameEntered.greetNameEnter('Sibusiso', 'IsiXhosa'), 'Molo, Sibusiso');
+    it('should keep track of one name entered', function () {
+        var nameEntered = greetFactory();
+        nameEntered.greetNameEntered("Victor", "English");
+        assert.deepEqual(["victor"], nameEntered.getNames());
 
-});
+    });
 
-    var nameEntered3 = greetFactory();
+    it('should keep track of two names entered', function () {
+        var nameEntered = greetFactory();
+        nameEntered.greetNameEntered("Victor", "English");
+        nameEntered.greetNameEntered("Sbu", "Isixhosa");
+        assert.deepEqual(["victor", "sbu"], nameEntered.getNames());
 
-    nameEntered3.greetNameEnter();
+    });
 
-    it('should greet name entered  in the selected language which is Afrikaans', function(){
-        assert.deepEqual(nameEntered.greetNameEnter('Sesethu', 'Afrikaans'), 'Hallo, Sesethu');
+    it('should not greet if name is blank', function () {
+        var nameEntered = greetFactory();
+        nameEntered.greetNameEntered();
+        assert.deepEqual([], nameEntered.getNames());
+        assert.deepEqual(0, nameEntered.getCounter());
+    });
 
-});
+    it('should not keep track of names with numbers entered', function () {
+        var nameEntered = greetFactory();
+        nameEntered.greetNameEntered("Victor123");
+        assert.deepEqual([], nameEntered.getNames());
 
-it('should keep track of one name entered', function(){
-    var names = greetFactory();
+    });
 
-    names.greetedPeople("Victor");
-    assert.deepEqual({name : "Victor"}, names.greeted());
+    it('should be able to count name(s) entered', function () {
+        var nameEntered = greetFactory();
+        nameEntered.greetNameEntered("victor", "English");
+        nameEntered.greetNameEntered("sibusiso", "English");
+        nameEntered.greetNameEntered("sesethu", "Isixhosa");
+        nameEntered.greetNameEntered("victor","English");
+        nameEntered.getNames();
+        assert.deepEqual(3, nameEntered.getCounter());
 
-});
-
-it('should be able to count name(s) entered', function(){
-    var names2 = greetFactory();
-
-    names2.greetedPeople("Victor");
-    names2.greeted();
-    assert.deepEqual(1, names2.counter());
-
-});
+    });
 
 
 

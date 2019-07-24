@@ -1,45 +1,71 @@
-function greetFactory(nameList) {
+function greetFactory(list) {
 
+    var names = list;
 
-    var namesGreeted = nameList || {};
-    //    var counter = 0
+    function greetNameEntered(username, lang)
+    {   
 
-
-
-    function greetNameEntered(Username, lang) {
-    var str = Username.toUpperCase();
-        if (namesGreeted[str] === undefined) {
-            namesGreeted[str] = 0;
+        // before you do anything check the username
+        // if it is blank or undefined do nothing
+        if(username === "" && lang === undefined)
+        {
+            return "Please fill out name and  select a language";
+        }
+        // set error message
+        // else clear error message and procee
+        // also check language
+        if(lang === undefined)
+        {
+            return "Please select language";
+        }
+        
+        var theName = username.toLowerCase();
+        var gotNumber = /\d.*\d.*/.test(theName);
+        if(theName){
+        if (!names.includes(theName) && !gotNumber)
+        {
+            names.push(theName);
+        }
+        if(gotNumber)
+        {
+            return "No numbers allowed";
         }
 
-             else {
-                 namesGreeted[str] = Username;
-             }
+        if (lang === "English")
+        {
+            return "Hello, " + username;
+        } 
+        else if (lang === "IsiXhosa") 
+        {
+            return "Molo, " + username;
+        } 
+        else if (lang === "Afrikaans") 
+        {
+            return "Hallo, " + username;
+        }
+    }else{
+        return "Please enter name"
+    }
+}
 
-         if (lang === "English") {
-                return "Hello, " + Username;
-        }
-        else if (lang === "IsiXhosa") {
-            return "Molo, " + Username;
-        }
-        else if (lang === "Afrikaans") {
-            return "Hallo, " + Username;
-        }
+    function getNames()
+    {
+        return names;
     }
 
-    function greeted() {
-        return namesGreeted;
+    function getCounter()
+    {
+        return names.length;
     }
 
-    function counter() {
-        var c = Object.keys(namesGreeted).length
-        return c;
-    }
-    console.log(namesGreeted);
+    function clear () {
+        names = [];
+    };
+
     return {
         greetNameEntered,
-        greetedPeople,
-        greeted,
-        counter
+        getCounter,
+        getNames,
+        clear
     }
 }
