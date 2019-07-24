@@ -1,19 +1,14 @@
 function greetFactory(list) {
 
-    var names = list;
+    var names = list || [];
 
     function greetNameEntered(username, lang)
     {   
 
-        // before you do anything check the username
-        // if it is blank or undefined do nothing
         if(username === "" && lang === undefined)
         {
             return "Please fill out name and  select a language";
         }
-        // set error message
-        // else clear error message and procee
-        // also check language
         if(lang === undefined)
         {
             return "Please select language";
@@ -66,6 +61,6 @@ function greetFactory(list) {
         greetNameEntered,
         getCounter,
         getNames,
-        clear
+        clear,
     }
 }
