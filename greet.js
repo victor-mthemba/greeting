@@ -4,7 +4,7 @@ var radioType = document.querySelectorAll(".languageType");
 var output = document.querySelector(".greet-message")
 var counter = document.querySelector(".counterOutPut");
 var resetbutton = document.querySelector(".resetBtn")
-
+//creating an instance
 var instance = greetFactory();
 
 
